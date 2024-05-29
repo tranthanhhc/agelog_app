@@ -1,3 +1,4 @@
+import 'package:agelog_app/data/day_data.dart';
 import 'package:agelog_app/widgets/status_row.dart';
 import 'package:flutter/material.dart';
 import 'package:agelog_app/widgets/customer_row.dart';
@@ -57,7 +58,67 @@ class _DashBoardState extends State<DashBoard> {
       ),
       body: _buildBody(),
       backgroundColor: Colors.white,
-      bottomNavigationBar: _buildBotNav(),
+      //bottomNavigationBar: _buildBotNav(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: _buildBottomNavigationAppBar(),
+    );
+  }
+
+  Padding _buildBottomNavigationAppBar() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0,right: 10.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
+        child: BottomNavigationBar(
+          backgroundColor: const Color(0XFFFC6C0F),
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          items: [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: IconButton(
+                onPressed: () {},
+                icon: const ImageIcon(
+                  AssetImage('assets/images/home.png'),
+                  //size: 32,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Consultant',
+              icon: IconButton(
+                onPressed: () {},
+                icon: const ImageIcon(
+                  AssetImage('assets/images/Consultant.png'),
+                  //size: 32,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'contact',
+              icon: IconButton(
+                onPressed: () {},
+                icon: const ImageIcon(
+                  AssetImage('assets/images/Y99dDJ.tif.png'),
+                  //size: 32,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'tr90',
+              icon: IconButton(
+                onPressed: () {},
+                icon: const ImageIcon(
+                  AssetImage('assets/images/tr90.png'),
+                  //size: 32,
+                ),
+              ),
+            ),
+
+          ],
+        ),
+      ),
     );
   }
 
@@ -335,53 +396,52 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
-  Padding _buildBotNav() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 50.0,
-        margin: const EdgeInsets.only(left: 5.0, right: 5.0),
-        decoration: BoxDecoration(
-          color: const Color(0XFFFC6C0F),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            IconButton(
-              onPressed: () {},
-              icon: ImageIcon(
-                const AssetImage('assets/images/home.png'),
-                color: Colors.white.withOpacity(0.8),
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const ImageIcon(
-                AssetImage('assets/images/Consultant.png'),
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const ImageIcon(
-                AssetImage('assets/images/Y99dDJ.tif.png'),
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const ImageIcon(
-                AssetImage('assets/images/tr90.png'),
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Padding _buildBotNav() {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(left: 20.0,right: 20.0,bottom: 30.0),
+  //     child: ClipRRect(
+  //       borderRadius: BorderRadius.circular(15),
+  //       child: BottomAppBar(
+  //         height: 80,
+  //         color: const Color(0XFFFC6C0F), // Màu nền của BottomAppBar
+  //         child: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //           children: <Widget>[
+  //             IconButton(
+  //               onPressed: () {},
+  //               icon: ImageIcon(
+  //                 const AssetImage('assets/images/home.png'),
+  //                 color: Colors.white.withOpacity(0.8),
+  //                 size: 80,
+  //               ),
+  //             ),
+  //             IconButton(
+  //               onPressed: () {},
+  //               icon: const ImageIcon(
+  //                 AssetImage('assets/images/Consultant.png'),
+  //                 color: Colors.white,
+  //               ),
+  //             ),
+  //             IconButton(
+  //               onPressed: () {},
+  //               icon: const ImageIcon(
+  //                 AssetImage('assets/images/Y99dDJ.tif.png'),
+  //                 color: Colors.white,
+  //               ),
+  //             ),
+  //             IconButton(
+  //               onPressed: () {},
+  //               icon: const ImageIcon(
+  //                 AssetImage('assets/images/tr90.png'),
+  //                 color: Colors.white,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Column _buildTransformation() {
     return  Column(
@@ -420,33 +480,30 @@ class _DashBoardState extends State<DashBoard> {
             spacing: 30, // Khoảng cách giữa các widget
             runSpacing:30, // Khoảng cách giữa các hàng
             children: List.generate(6, (index) {
-              return const Row(
+              return  Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Day 1',),
-                      Card(
+                      Text(DayData.daytime[index]),
+                      const Card(
                           child: ImageIcon(
                             AssetImage('images/Group_1339.png'),
                             size: 200,
                           ),
                       ),
-                      Text('Front'),
+                      const Text('Front'),
                     ],
                   ),
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: SizedBox(
-                          width: 100,
-                          child: Text(
-                            'Share',
-                            style: TextStyle(color: Color(0XFFFC6C0F),
-                            ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 170),
+                        child: Text(
+                          'Share',
+                          style: TextStyle(color: Color(0XFFFC6C0F),
                           ),
                         ),
                       ),
