@@ -1,3 +1,5 @@
+import 'package:agelog_app/constant/app_images.dart';
+import 'package:agelog_app/constant/app_string.dart';
 import 'package:agelog_app/data/day_data.dart';
 import 'package:agelog_app/widgets/status_row.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,7 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Yours 90 Days',
+          AppString.appbar_title,
           style: TextStyle(
             color: Color(0XFFFC6C0F),
           ),
@@ -25,25 +27,25 @@ class _DashBoardState extends State<DashBoard> {
         backgroundColor: Colors.white,
         foregroundColor: const Color(0XFFFC6C0F),
         leading: IconButton(
-          icon: const ImageIcon(AssetImage('assets/images/bars.png')),
+          icon: const ImageIcon(AssetImage(AppImages.icBars)),
           onPressed: () {},
         ),
         actions: <Widget>[
           IconButton(
-            icon: const ImageIcon(AssetImage('assets/images/plus.png')),
+            icon: const ImageIcon(AssetImage(AppImages.icPlus)),
             onPressed: () {},
           ),
           Padding(
             padding: const EdgeInsets.only(left: 1.0),
             child: IconButton(
-              icon: const ImageIcon(AssetImage('assets/images/bell.png')),
+              icon: const ImageIcon(AssetImage(AppImages.icBell)),
               onPressed: () {},
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 1.0, right: 3.0),
             child: IconButton(
-              icon: const ImageIcon(AssetImage('assets/images/comment-dots.png')),
+              icon: const ImageIcon(AssetImage(AppImages.icComment)),
               onPressed: () {},
             ),
           ),
@@ -59,14 +61,14 @@ class _DashBoardState extends State<DashBoard> {
       body: _buildBody(),
       backgroundColor: Colors.white,
       //bottomNavigationBar: _buildBotNav(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _buildBottomNavigationAppBar(),
     );
   }
 
   Padding _buildBottomNavigationAppBar() {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0,right: 10.0),
+      padding: const EdgeInsets.only(left: 10.0,right: 10.0,bottom: 20.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.0),
         child: BottomNavigationBar(
@@ -76,41 +78,41 @@ class _DashBoardState extends State<DashBoard> {
           unselectedItemColor: Colors.white,
           items: [
             BottomNavigationBarItem(
-              label: 'Home',
+              label: AppLabel.home_label,
               icon: IconButton(
                 onPressed: () {},
                 icon: const ImageIcon(
-                  AssetImage('assets/images/home.png'),
+                  AssetImage(AppImages.icHome),
                   //size: 32,
                 ),
               ),
             ),
             BottomNavigationBarItem(
-              label: 'Consultant',
+              label: AppLabel.consultant_label,
               icon: IconButton(
                 onPressed: () {},
                 icon: const ImageIcon(
-                  AssetImage('assets/images/Consultant.png'),
+                  AssetImage(AppImages.icConsultant),
                   //size: 32,
                 ),
               ),
             ),
             BottomNavigationBarItem(
-              label: 'contact',
+              label: AppLabel.contact_label,
               icon: IconButton(
                 onPressed: () {},
                 icon: const ImageIcon(
-                  AssetImage('assets/images/Y99dDJ.tif.png'),
+                  AssetImage(AppImages.icContact),
                   //size: 32,
                 ),
               ),
             ),
             BottomNavigationBarItem(
-              label: 'tr90',
+              label: AppLabel.tr90_label,
               icon: IconButton(
                 onPressed: () {},
                 icon: const ImageIcon(
-                  AssetImage('assets/images/tr90.png'),
+                  AssetImage(AppImages.icTr90),
                   //size: 32,
                 ),
               ),
@@ -186,7 +188,7 @@ class _DashBoardState extends State<DashBoard> {
           ),
           Padding(padding: EdgeInsets.only(bottom: 20.0)),
           Text(
-            'User Name',
+            AppString.user_name,
             style: TextStyle(color: Color(0XFFFC6C0F), fontSize: 18),
           ),
         ],
